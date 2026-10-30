@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rempah &amp; Bahan — NUSAHERA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="js/tailwind.config.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-terracotta selection:text-white">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 shadow-sm">
+        <div class="bg-cream/95 backdrop-blur-md border-b border-forest/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-0 sm:h-16 flex flex-wrap sm:flex-nowrap items-center gap-x-4 gap-y-2">
+                <a href="index.html" class="flex items-center gap-2 group shrink-0">
+                    <div class="w-10 h-10 flex items-center justify-center text-forest group-hover:text-gold transition-colors">
+                        <img src="assets/images/logo.png" alt="Logo NUSAHERA" class="h-10 w-auto object-contain">
+                    </div>
+                    <span class="font-heading text-2xl font-bold tracking-wider text-forest">NUSAHERA</span>
+                </a>
+                <form onsubmit="filterRempah(event)" class="order-last sm:order-none w-full sm:w-auto flex items-center sm:flex-1 max-w-xl mx-auto">
+                    <div class="relative w-full">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-forest/40 text-sm"></i>
+                        <input id="header-search" type="search" placeholder="Cari rempah atau daerah..." class="w-full pl-10 pr-4 py-2.5 text-sm rounded-full bg-cream-card border border-forest/15 text-forest placeholder:text-forest/45 focus:outline-none focus:border-terracotta">
+                    </div>
+                </form>
+                <div class="flex items-center gap-1 shrink-0 text-forest ml-auto sm:ml-0">
+                    <button type="button" class="w-10 h-10 rounded-full hover:bg-forest/5 flex items-center justify-center transition-colors" aria-label="Keranjang"><i class="fa-solid fa-cart-shopping"></i></button>
+                    <button type="button" class="w-10 h-10 rounded-full hover:bg-forest/5 flex items-center justify-center transition-colors" aria-label="Akun"><i class="fa-regular fa-user"></i></button>
+                    <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 rounded-full hover:bg-forest/5 flex items-center justify-center transition-colors" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </div>
+        </div>
+        <!-- Menu utama: popup di mobile, baris horizontal di desktop -->
+        <div id="mobile-menu" class="hidden md:block fixed md:static inset-0 z-50 bg-black/50 md:bg-terracotta p-4 md:p-0" role="dialog" aria-modal="true" aria-label="Menu navigasi">
+            <div class="mx-auto max-w-sm mt-16 bg-terracotta text-cream rounded-2xl shadow-2xl overflow-hidden md:max-w-none md:mt-0 md:rounded-none md:shadow-none md:overflow-visible">
+                <div class="md:hidden flex items-center justify-between px-5 py-3 border-b border-cream/20">
+                    <span class="font-bold tracking-widest text-sm">MENU</span>
+                    <button id="menu-close" type="button" class="w-9 h-9 rounded-full hover:bg-white/10 flex items-center justify-center" aria-label="Tutup menu"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between">
+                    <nav class="flex flex-col md:flex-row md:items-center text-sm font-semibold uppercase tracking-wide">
+                    <a href="index.html" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Home</a>
+                    <a href="masakan.html" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Makanan Tradisional</a>
+                    <a href="rempah.html" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap bg-terracotta-dark">Rempah-Rempah</a>
+                    <a href="index.html#map-section" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Peta Rempah</a>
+                    <a href="index.html#edukasi" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Tentang Kami</a>
+                </nav>
+                    <div class="flex items-center gap-5 text-xs text-cream/80 px-4 py-3 md:py-0 md:px-0 md:pr-2 shrink-0">
+                    <a href="#" class="hover:text-white transition-colors">Blog</a>
+                    <a href="#" class="hover:text-white transition-colors">Event</a>
+                    <a href="#" class="hover:text-white transition-colors">Forum</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="mb-8">
+            <a href="index.html" class="text-xs text-terracotta font-semibold hover:underline"><i class="fa-solid fa-arrow-left mr-1"></i> Kembali ke beranda</a>
+            <span class="block text-xs font-bold uppercase tracking-widest text-terracotta mt-4">Ensiklopedia</span>
+            <h1 class="text-3xl sm:text-4xl font-bold text-forest mt-1">REMPAH &amp; BAHAN</h1>
+            <p class="text-sm text-forest/70 mt-2 max-w-2xl">Seluruh rempah dan bumbu khas Nusantara beserta asal wilayah dan manfaatnya. Klik kartu untuk detail.</p>
+        </div>
+
+        <div id="spice-grid-full" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5"></div>
+        <p id="empty-msg" class="hidden text-sm text-forest/60 py-10 text-center">Tidak ada rempah yang cocok dengan pencarianmu.</p>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-forest-dark text-cream/60 py-8 border-t border-gold/10 text-xs">
+        <div class="max-w-7xl mx-auto px-4 text-center">&copy; 2026 NUSAHERA. Seluruh hak cipta dilindungi.</div>
+    </footer>
+
+    <script src="js/catalog.js"></script>
+    <script>
+        // Rempah dimuat dari data/nusahera_rempah.json; kartu membuka modal detail bawaan catalog.js.
+        NUSA.renderSpices('spice-grid-full', {});   // tampilkan "Memuat…" dulu
+        NUSA.loadSpices().then(() => NUSA.renderSpices('spice-grid-full', {}));
+
+        function filterRempah(e) {
+            e.preventDefault();
+            const q = (document.getElementById('header-search').value || '').trim().toLowerCase();
+            if (!NUSA.spiceCatalog.length) return;
+            const matches = NUSA.spiceCatalog.map((s, i) => ({ s, i })).filter(o =>
+                !q || o.s.name.toLowerCase().includes(q) || o.s.province.toLowerCase().includes(q) || o.s.sub.toLowerCase().includes(q));
+            NUSA.renderSpicesSubset('spice-grid-full', matches);
+            document.getElementById('empty-msg').classList.toggle('hidden', matches.length > 0);
+        }
+    </script>
+    <script src="js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+{
+  "nama_aplikasi": "NUSAHERA - Nusantara Heritage",
+  "versi_schema": "1.0",
+  "catatan": "SUMBER DATA TUNGGAL rempah untuk seluruh situs (katalog, pencarian, peta, jalur resep, chatbot Nura). Untuk menambah rempah: salin satu blok di 'rempah', beri id baru, isi field, simpan, lalu refresh. Field wajib: nama, koordinat{lng,lat}. Lainnya opsional. daerah/provinsi = teks di kartu; lokasi = teks di peta; koordinat berformat lng/lat (urutan Mapbox); gambar_url = foto kartu; gambar_peta_url (opsional) = foto marker peta bila berbeda; alias (opsional) = nama lain yang dipakai di resep agar tetap cocok (mis. 'sereh' untuk Serai). Nama di 'rempah_utama' pada nusahera_resep.json harus sama dengan 'nama' (atau salah satu 'alias') di sini agar muncul di jalur peta.",
+  "jumlah": 25,
+  "rempah": [
+    {
+      "id": "rmp-01",
+      "nama": "Andaliman",
+      "daerah": "Tapanuli",
+      "provinsi": "Sumatera Utara",
+      "lokasi": "Toba, Sumatera Utara",
+      "koordinat": {
+        "lng": 98.9667,
+        "lat": 2.5833
+      },
+      "ikon": "🌿",
+      "warna": "#166534",
+      "deskripsi": "Rempah khas Batak yang dikenal dengan sensasi getir dan kebas pada lidah. Andaliman banyak digunakan dalam masakan tradisional Sumatera Utara.",
+      "manfaat": "Rempah khas Batak dengan aroma citrus yang unik.",
+      "khasiat": "Kaya antioksidan, antimicrobial alami, merangsang nafsu makan, serta membantu meredakan nyeri dan meningkatkan sirkulasi darah.",
+      "gambar_url": "assets/images/bahan/andaliman.jpg"
+    },
+    {
+      "id": "rmp-02",
+      "nama": "Asam Jawa",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Jawa Timur",
+      "koordinat": {
+        "lng": 112.7508,
+        "lat": -7.2575
+      },
+      "ikon": "🌰",
+      "warna": "#92400e",
+      "deskripsi": "Buah asam yang digunakan untuk memberikan cita rasa asam pada sayur asem, sambal, jamu, dan berbagai masakan Nusantara.",
+      "manfaat": "Pemberi rasa asam alami pada masakan dan minuman.",
+      "khasiat": "Membantu melancarkan pencernaan, menurunkan kadar kolesterol, meredakan peradangan, dan mendukung kesehatan jantung.",
+      "gambar_url": "assets/images/bahan/asam_jawa.jpg"
+    },
+    {
+      "id": "rmp-03",
+      "nama": "Bawang Bombai",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Berastagi, Sumatera Utara",
+      "koordinat": {
+        "lng": 98.5089,
+        "lat": 3.1947
+      },
+      "ikon": "🧅",
+      "warna": "#b45309",
+      "deskripsi": "Bawang berukuran besar yang digunakan sebagai bahan dasar tumisan, sup, kari, dan berbagai hidangan modern maupun tradisional.",
+      "manfaat": "Penyedap alami untuk tumisan, sup, dan berbagai hidangan.",
+      "khasiat": "Kaya akan kuersetin dan senyawa sulfur yang membantu menjaga kesehatan jantung, mengontrol gula darah, serta meningkatkan sistem imun.",
+      "gambar_url": "assets/images/bahan/bawang_bombai.jpg"
+    },
+    {
+      "id": "rmp-04",
+      "nama": "Bawang Merah",
+      "daerah": "Brebes",
+      "provinsi": "Jawa Tengah",
+      "lokasi": "Brebes, Jawa Tengah",
+      "koordinat": {
+        "lng": 109.0433,
+        "lat": -6.8722
+      },
+      "ikon": "🧅",
+      "warna": "#dc2626",
+      "deskripsi": "Brebes dikenal sebagai salah satu sentra utama produksi bawang merah Indonesia. Bawang merah menjadi bumbu dasar berbagai masakan Nusantara.",
+      "manfaat": "Penyedap alami dan sumber antioksidan.",
+      "khasiat": "Membantu meredakan gejala masuk angin, menjaga kadar kolesterol, meningkatkan kekebalan tubuh, dan mendukung kesehatan pencernaan.",
+      "gambar_url": "assets/images/bahan/bawang_merah.png"
+    },
+    {
+      "id": "rmp-05",
+      "nama": "Bawang Putih",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Temanggung, Jawa Tengah",
+      "koordinat": {
+        "lng": 110.176,
+        "lat": -7.3167
+      },
+      "ikon": "🧄",
+      "warna": "#d6d3d1",
+      "deskripsi": "Bawang putih memberikan aroma dan rasa gurih pada masakan. Tanaman ini dibudidayakan di sejumlah wilayah dataran tinggi Indonesia.",
+      "manfaat": "Penyedap utama dengan aroma kuat dan cita rasa gurih.",
+      "khasiat": "Mengandung alisin yang berfungsi sebagai antibakteri alami, menurunkan tekanan darah tinggi, serta mengurangi risiko penyakit jantung.",
+      "gambar_url": "assets/images/bahan/bawang_putih.jpg"
+    },
+    {
+      "id": "rmp-06",
+      "nama": "Cabai",
+      "daerah": "Lombok",
+      "provinsi": "Nusa Tenggara Barat",
+      "lokasi": "Lombok, Nusa Tenggara Barat",
+      "koordinat": {
+        "lng": 116.3249,
+        "lat": -8.6529
+      },
+      "ikon": "🌶️",
+      "warna": "#ef4444",
+      "deskripsi": "Cabai menjadi bahan penting dalam sambal dan berbagai masakan pedas Indonesia. Lombok juga dikenal dengan kuliner bercita rasa pedas.",
+      "manfaat": "Memberikan rasa pedas dan mengandung vitamin C.",
+      "khasiat": "Kapsaicin di dalamnya membantu meningkatkan metabolisme tubuh, meredakan rasa sakit alami, dan kaya akan vitamin C untuk imunitas.",
+      "gambar_url": "assets/images/bahan/cabai.jpg",
+      "alias": [
+        "cabe"
+      ]
+    },
+    {
+      "id": "rmp-07",
+      "nama": "Cengkeh",
+      "daerah": "Maluku",
+      "provinsi": "Maluku",
+      "lokasi": "Ternate, Maluku Utara",
+      "koordinat": {
+        "lng": 127.3614,
+        "lat": 0.7907
+      },
+      "ikon": "🌺",
+      "warna": "#881337",
+      "deskripsi": "Cengkeh merupakan rempah penting dalam sejarah perdagangan dunia. Kepulauan Maluku dikenal sebagai salah satu kawasan historis utama penghasil cengkeh.",
+      "manfaat": "Rempah aromatik dengan kandungan eugenol alami.",
+      "khasiat": "Mengandung eugenol yang berfungsi sebagai antiseptik dan pereda nyeri (terutama sakit gigi), melancarkan pencernaan, serta meredakan batuk.",
+      "gambar_url": "assets/images/bahan/cengkeh.jpg"
+    },
+    {
+      "id": "rmp-08",
+      "nama": "Daun Kemangi",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Bogor, Jawa Barat",
+      "koordinat": {
+        "lng": 106.806,
+        "lat": -6.5971
+      },
+      "ikon": "🌿",
+      "warna": "#15803d",
+      "deskripsi": "Daun aromatik yang sering digunakan sebagai lalapan, pelengkap pepes, dan bahan penyedap dengan aroma segar yang khas.",
+      "manfaat": "Daun aromatik untuk lalapan dan pelengkap masakan.",
+      "khasiat": "Membantu mengatasi bau badan dan mulut, meredakan stres (adaptogenik), mendukung kesehatan fungsi hati, serta menyegarkan napas.",
+      "gambar_url": "assets/images/bahan/daun_kemangi.jpg"
+    },
+    {
+      "id": "rmp-09",
+      "nama": "Daun Salam",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Jawa Barat",
+      "koordinat": {
+        "lng": 107.6191,
+        "lat": -6.9175
+      },
+      "ikon": "🍃",
+      "warna": "#166534",
+      "deskripsi": "Daun salam digunakan untuk memperkaya aroma nasi, sayur, semur, rendang, dan berbagai hidangan tradisional Indonesia.",
+      "manfaat": "Penyedap aromatik untuk masakan tradisional Nusantara.",
+      "khasiat": "Membantu menurunkan kadar gula darah, mengurangi kadar asam urat, serta mendukung penurunan tekanan darah tinggi.",
+      "gambar_url": "assets/images/bahan/daun_salam.jpg",
+      "gambar_peta_url": "assets/images/bahan/daun_salam.jpeg"
+    },
+    {
+      "id": "rmp-10",
+      "nama": "Jahe",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Rejang Lebong, Bengkulu",
+      "koordinat": {
+        "lng": 102.5333,
+        "lat": -3.45
+      },
+      "ikon": "🫚",
+      "warna": "#b45309",
+      "deskripsi": "Rimpang aromatik yang digunakan dalam bumbu masakan, minuman tradisional, dan jamu. Jahe memberikan sensasi hangat serta aroma yang kuat.",
+      "manfaat": "Menghangatkan badan dan digunakan dalam minuman tradisional.",
+      "khasiat": "Meredakan mual, menghangatkan tubuh, mengurangi nyeri sendi dan otot, serta menangkal infeksi virus dan bakteri.",
+      "gambar_url": "assets/images/bahan/jahe.jpg"
+    },
+    {
+      "id": "rmp-11",
+      "nama": "Jeruk Purut",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Bali",
+      "koordinat": {
+        "lng": 115.1889,
+        "lat": -8.4095
+      },
+      "ikon": "🍋",
+      "warna": "#15803d",
+      "deskripsi": "Jeruk dengan kulit bertekstur dan aroma khas. Daun serta buahnya digunakan untuk memberikan kesegaran pada sambal, sup, dan hidangan Nusantara.",
+      "manfaat": "Memberikan aroma segar pada sambal dan masakan berkuah.",
+      "khasiat": "Aroma daunnya membantu meredakan stres dan kecemasan, menjaga kesehatan mulut dan gusi, serta melancarkan sistem pencernaan.",
+      "gambar_url": "assets/images/bahan/jeruk_purut.jpg",
+      "alias": [
+        "daun jeruk",
+        "jeruk"
+      ]
+    },
+    {
+      "id": "rmp-12",
+      "nama": "Jeruk Sambal",
+      "daerah": "Kalimantan Barat",
+      "provinsi": "Kalimantan Barat",
+      "lokasi": "Pontianak, Kalimantan Barat",
+      "koordinat": {
+        "lng": 109.3425,
+        "lat": -0.0263
+      },
+      "ikon": "🍋",
+      "warna": "#65a30d",
+      "deskripsi": "Jeruk bercita rasa asam yang digunakan sebagai pelengkap sambal dan hidangan lokal. Jeruk sambal populer dalam tradisi kuliner berbagai daerah Indonesia.",
+      "manfaat": "Pemberi rasa asam segar untuk sambal dan hidangan lokal.",
+      "khasiat": "Tinggi vitamin C yang meningkatkan kekebalan tubuh, membantu penyerapan zat besi, serta menjaga kesegaran kulit.",
+      "gambar_url": "assets/images/bahan/jeruk_sambal.jpg"
+    },
+    {
+      "id": "rmp-13",
+      "nama": "Kapulaga",
+      "daerah": "Tasikmalaya",
+      "provinsi": "Jawa Barat",
+      "lokasi": "Tasikmalaya, Jawa Barat",
+      "koordinat": {
+        "lng": 108.2207,
+        "lat": -7.3274
+      },
+      "ikon": "🫘",
+      "warna": "#a16207",
+      "deskripsi": "Rempah aromatik yang digunakan dalam gulai, kari, sup, dan racikan minuman tradisional. Kapulaga memiliki aroma hangat dan khas.",
+      "manfaat": "Rempah harum untuk gulai, kari, dan berbagai masakan.",
+      "khasiat": "Membantu mengatasi masalah pernapasan (seperti asma), menyegarkan bau mulut, melancarkan buang air kecil (diuretik), dan mengontrol tekanan darah.",
+      "gambar_url": "assets/images/bahan/kapulaga.jpg"
+    },
+    {
+      "id": "rmp-14",
+      "nama": "Kayu Manis",
+      "daerah": "Kerinci",
+      "provinsi": "Jambi",
+      "lokasi": "Kerinci, Jambi",
+      "koordinat": {
+        "lng": 101.4883,
+        "lat": -2.0864
+      },
+      "ikon": "🪵",
+      "warna": "#92400e",
+      "deskripsi": "Kulit batang pohon yang dikeringkan menjadi rempah beraroma manis. Kayu manis Kerinci merupakan salah satu komoditas rempah unggulan Indonesia.",
+      "manfaat": "Aroma manis alami untuk masakan dan minuman.",
+      "khasiat": "Meningkatkan sensitivitas insulin untuk mengontrol gula darah, kaya antioksidan anti-penuaan, dan meredakan peradangan kronis.",
+      "gambar_url": "assets/images/bahan/kayu_manis.jpg"
+    },
+    {
+      "id": "rmp-15",
+      "nama": "Kemiri",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Flores, Nusa Tenggara Timur",
+      "koordinat": {
+        "lng": 120,
+        "lat": -8.65
+      },
+      "ikon": "🌰",
+      "warna": "#a16207",
+      "deskripsi": "Biji kemiri digunakan sebagai bumbu untuk menghasilkan tekstur kental dan rasa gurih pada opor, gulai, sambal, serta beragam masakan Nusantara.",
+      "manfaat": "Pengental sekaligus penggurih bumbu masakan.",
+      "khasiat": "Kandungan asam lemak esensialnya bermanfaat untuk kesehatan rambut dan kulit, mengatasi diare ringan, serta menjaga kesehatan jantung.",
+      "gambar_url": "assets/images/bahan/kemiri.jpeg"
+    },
+    {
+      "id": "rmp-16",
+      "nama": "Kencur",
+      "daerah": "Jawa Barat",
+      "provinsi": "Jawa Barat",
+      "lokasi": "Jawa Barat",
+      "koordinat": {
+        "lng": 107.6191,
+        "lat": -6.9175
+      },
+      "ikon": "🌱",
+      "warna": "#65a30d",
+      "deskripsi": "Rimpang dengan aroma khas yang menjadi bahan penting dalam seblak, bumbu pecel, dan minuman tradisional beras kencur.",
+      "manfaat": "Bahan utama beras kencur dan bumbu berbagai masakan.",
+      "khasiat": "Meredakan batuk dan tenggorokan gatal, menenangkan perut kembung, meningkatkan stamina tubuh, serta meredakan sakit kepala.",
+      "gambar_url": "assets/images/bahan/kencur.jpg"
+    },
+    {
+      "id": "rmp-17",
+      "nama": "Ketumbar",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Jawa Timur",
+      "koordinat": {
+        "lng": 112.7508,
+        "lat": -7.2575
+      },
+      "ikon": "🟤",
+      "warna": "#a16207",
+      "deskripsi": "Biji ketumbar digunakan sebagai bumbu dasar untuk marinasi, ungkep ayam, gulai, dan berbagai masakan berbumbu.",
+      "manfaat": "Aroma khas untuk bumbu dasar dan marinasi masakan.",
+      "khasiat": "Membantu menurunkan kadar kolesterol jahat (LDL), menjaga kesehatan pencernaan, melancarkan peredaran darah, serta bersifat antimikroba.",
+      "gambar_url": "assets/images/bahan/ketumbar.jpg"
+    },
+    {
+      "id": "rmp-18",
+      "nama": "Kucai",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Wonosobo, Jawa Tengah",
+      "koordinat": {
+        "lng": 109.9,
+        "lat": -7.3625
+      },
+      "ikon": "🌿",
+      "warna": "#15803d",
+      "deskripsi": "Daun aromatik yang digunakan sebagai pelengkap hidangan, tumisan, dan berbagai olahan tradisional. Kucai tumbuh baik di lingkungan yang sesuai dengan kebutuhan suhunya.",
+      "manfaat": "Daun aromatik sebagai pelengkap tumisan dan hidangan.",
+      "khasiat": "Kaya akan vitamin K untuk kesehatan tulang, membantu meningkatkan kognisi daya ingat, serta menjaga kesehatan mata.",
+      "gambar_url": "assets/images/bahan/kucai.jpg"
+    },
+    {
+      "id": "rmp-19",
+      "nama": "Kunyit",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Bali",
+      "koordinat": {
+        "lng": 115.1889,
+        "lat": -8.4095
+      },
+      "ikon": "🫚",
+      "warna": "#d97706",
+      "deskripsi": "Rimpang berwarna kuning-oranye yang memberikan warna dan aroma khas pada masakan. Kunyit juga digunakan dalam jamu dan bumbu tradisional Bali.",
+      "manfaat": "Pewarna kuning alami dan bahan bumbu serta jamu.",
+      "khasiat": "Senyawa kurkumin berkhasiat tinggi sebagai anti-inflamasi, meredakan nyeri haid dan sakit lambung (maag), serta meningkatkan daya tahan tubuh.",
+      "gambar_url": "assets/images/bahan/kunyit.jpg",
+      "alias": [
+        "daun kunyit"
+      ]
+    },
+    {
+      "id": "rmp-20",
+      "nama": "Lada Putih",
+      "daerah": "Bangka",
+      "provinsi": "Kepulauan Bangka Belitung",
+      "lokasi": "Bangka, Kepulauan Bangka Belitung",
+      "koordinat": {
+        "lng": 106.1169,
+        "lat": -2.5489
+      },
+      "ikon": "⚪",
+      "warna": "#4b5563",
+      "deskripsi": "Lada putih Bangka, yang dikenal melalui produk Muntok White Pepper, merupakan komoditas rempah unggulan dengan aroma khas dan rasa pedas.",
+      "manfaat": "Rempah pedas hangat dengan aroma khas kepulauan.",
+      "khasiat": "Kandungan piperin membantu meredakan hidung tersumbat, melegakan saluran pernapasan, merangsang pencernaan, dan membakar kalori.",
+      "gambar_url": "assets/images/bahan/lada_putih.jpg",
+      "alias": [
+        "lada"
+      ]
+    },
+    {
+      "id": "rmp-21",
+      "nama": "Pala",
+      "daerah": "Kepulauan Banda",
+      "provinsi": "Maluku",
+      "lokasi": "Kepulauan Banda, Maluku",
+      "koordinat": {
+        "lng": 129.8972,
+        "lat": -4.5236
+      },
+      "ikon": "🌰",
+      "warna": "#78350f",
+      "deskripsi": "Kepulauan Banda merupakan kawasan bersejarah penghasil pala yang berperan besar dalam perdagangan rempah dunia. Pala digunakan dalam masakan, minuman, dan olahan pangan.",
+      "manfaat": "Rempah beraroma hangat dengan sejarah perdagangan panjang.",
+      "khasiat": "Membantu mengatasi insomnia dan meningkatkan kualitas tidur, meredakan nyeri persendian, serta meningkatkan kesehatan otak dan daya ingat.",
+      "gambar_url": "assets/images/bahan/pala.jpg"
+    },
+    {
+      "id": "rmp-22",
+      "nama": "Seledri",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Lembang, Jawa Barat",
+      "koordinat": {
+        "lng": 107.6175,
+        "lat": -6.8117
+      },
+      "ikon": "🌿",
+      "warna": "#16a34a",
+      "deskripsi": "Daun seledri digunakan untuk menambah aroma segar pada sup, soto, bakso, dan berbagai hidangan berkuah.",
+      "manfaat": "Penambah aroma segar untuk sup, soto, dan bakso.",
+      "khasiat": "Membantu menurunkan tekanan darah (hipertensi), bersifat diuretik untuk kesehatan ginjal, serta kaya antioksidan dan mineral.",
+      "gambar_url": "assets/images/bahan/seledri.jpg"
+    },
+    {
+      "id": "rmp-23",
+      "nama": "Serai",
+      "daerah": "Berbagai daerah",
+      "provinsi": "Indonesia",
+      "lokasi": "Aceh",
+      "koordinat": {
+        "lng": 96.9115,
+        "lat": 4.6951
+      },
+      "ikon": "🌾",
+      "warna": "#047857",
+      "deskripsi": "Serai memiliki aroma segar yang digunakan dalam gulai, rendang, sup, dan berbagai masakan tradisional. Serai juga dimanfaatkan dalam produksi minyak atsiri.",
+      "manfaat": "Penambah aroma segar pada kuah dan masakan tradisional.",
+      "khasiat": "Meringankan kecemasan (efek relaksasi), mengatasi asam lambung dan perut kembung, serta memiliki sifat antikanker dan antibakteri.",
+      "gambar_url": "assets/images/bahan/sereh.jpg",
+      "alias": [
+        "sereh"
+      ]
+    },
+    {
+      "id": "rmp-24",
+      "nama": "Temulawak",
+      "daerah": "Jawa",
+      "provinsi": "Indonesia",
+      "lokasi": "Sukabumi, Jawa Barat",
+      "koordinat": {
+        "lng": 106.9275,
+        "lat": -6.9277
+      },
+      "ikon": "🫚",
+      "warna": "#ca8a04",
+      "deskripsi": "Rimpang asli kawasan Asia Tenggara yang banyak dimanfaatkan dalam jamu, minuman tradisional, dan racikan herbal Indonesia.",
+      "manfaat": "Bahan racikan jamu dan minuman tradisional.",
+      "khasiat": "Sangat baik untuk menjaga fungsi organ hati (hepatoprotektor), menambah nafsu makan, serta melancarkan sistem pencernaan.",
+      "gambar_url": "assets/images/bahan/temulawak.jpg"
+    },
+    {
+      "id": "rmp-25",
+      "nama": "Temurui",
+      "daerah": "Aceh",
+      "provinsi": "Aceh",
+      "lokasi": "Aceh",
+      "koordinat": {
+        "lng": 96.9115,
+        "lat": 4.6951
+      },
+      "ikon": "🍃",
+      "warna": "#166534",
+      "deskripsi": "Daun temurui atau daun kari memiliki aroma khas dan banyak digunakan dalam masakan Aceh, terutama untuk memperkaya aroma tumisan dan hidangan berbumbu.",
+      "manfaat": "Daun aromatik untuk memperkaya cita rasa masakan Aceh.",
+      "khasiat": "Membantu mengontrol kadar gula darah, merangsang pertumbuhan rambut sehat, serta kaya antioksidan untuk memperkuat sel-sel tubuh.",
+      "gambar_url": "assets/images/bahan/temurui.jpg"
+    }
+  ]
+}

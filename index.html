@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUSAHERA - Jelajahi Kekayaan Kuliner & Rempah Nusantara</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Mapbox GL JS CSS & JS -->
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.15.0/mapbox-gl.js"></script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="js/tailwind.config.js"></script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased selection:bg-terracotta selection:text-white">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 shadow-sm">
+
+        <!-- Baris atas: logo + pencarian + ikon -->
+        <div class="bg-cream/95 backdrop-blur-md border-b border-forest/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 sm:py-0 sm:h-16 flex flex-wrap sm:flex-nowrap items-center gap-x-4 gap-y-2">
+
+                <!-- Brand Logo -->
+                <a href="#hero" class="flex items-center gap-2 group shrink-0">
+                    <div class="w-10 h-10 flex items-center justify-center text-forest group-hover:text-gold transition-colors">
+                         <img src="assets/images/logo.png" alt="Logo NUSAHERA" class="h-10 w-auto object-contain">
+                    </div>
+                    <span class="font-heading text-2xl font-bold tracking-wider text-forest">NUSAHERA</span>
+                </a>
+
+                <!-- Pencarian -->
+                <form onsubmit="NUSA.submitSearch(event)" class="order-last sm:order-none w-full sm:w-auto flex items-center sm:flex-1 max-w-xl mx-auto">
+                    <div class="relative w-full">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-forest/40 text-sm"></i>
+                        <input id="header-search" type="search" placeholder="Cari makanan rempah atau daerah" autocomplete="off" class="w-full pl-10 pr-4 py-2.5 text-sm rounded-full bg-cream-card border border-forest/15 text-forest placeholder:text-forest/45 focus:outline-none focus:border-terracotta">
+                    </div>
+                </form>
+
+                <!-- Ikon aksi -->
+                <div class="flex items-center gap-1 shrink-0 text-forest ml-auto sm:ml-0">
+                    <button type="button" class="w-10 h-10 rounded-full hover:bg-forest/5 flex items-center justify-center transition-colors" aria-label="Keranjang" title="Keranjang">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </button>
+                    <button type="button" class="w-10 h-10 rounded-full hover:bg-forest/5 flex items-center justify-center transition-colors" aria-label="Akun" title="Akun">
+                        <i class="fa-regular fa-user"></i>
+                    </button>
+                    <button id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" class="md:hidden w-10 h-10 rounded-full hover:bg-forest/5 flex items-center justify-center transition-colors" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu utama: popup di mobile, baris horizontal di desktop -->
+        <div id="mobile-menu" class="hidden md:block fixed md:static inset-0 z-50 bg-black/50 md:bg-terracotta p-4 md:p-0" role="dialog" aria-modal="true" aria-label="Menu navigasi">
+            <div class="mx-auto max-w-sm mt-16 bg-terracotta text-cream rounded-2xl shadow-2xl overflow-hidden md:max-w-none md:mt-0 md:rounded-none md:shadow-none md:overflow-visible">
+                <div class="md:hidden flex items-center justify-between px-5 py-3 border-b border-cream/20">
+                    <span class="font-bold tracking-widest text-sm">MENU</span>
+                    <button id="menu-close" type="button" class="w-9 h-9 rounded-full hover:bg-white/10 flex items-center justify-center" aria-label="Tutup menu"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 flex flex-col md:flex-row md:items-center md:justify-between">
+                    <nav class="flex flex-col md:flex-row md:items-center text-sm font-semibold uppercase tracking-wide">
+                    <a href="#hero" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Home</a>
+                    <a href="masakan.html" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Makanan Tradisional</a>
+                    <a href="#rempah" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Rempah-Rempah</a>
+                    <a href="#map-section" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Peta Rempah</a>
+                    <a href="#edukasi" class="px-4 py-3 md:py-3 border-b border-cream/10 md:border-0 active:bg-terracotta-dark transition-colors whitespace-nowrap">Tentang Kami</a>
+                </nav>
+                    <div class="flex items-center gap-5 text-xs text-cream/80 px-4 py-3 md:py-0 md:px-0 md:pr-2 shrink-0">
+                    <a href="#" class="hover:text-white transition-colors">Blog</a>
+                    <a href="#" class="hover:text-white transition-colors">Event</a>
+                    <a href="#" class="hover:text-white transition-colors">Forum</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section Banner -->
+    <section id="hero" class="relative overflow-hidden bg-forest text-cream py-16 lg:py-24">
+        <!-- Gambar latar: menempel penuh di sisi kanan -->
+        <div class="absolute inset-0 z-0 bg-no-repeat bg-cover" style="background-image: url('assets/images/background1.jpg'); background-position: right center;"></div>
+        <!-- Gradien pemudar: pekat di kiri agar teks terbaca, transparan di kanan agar gambar tampil penuh -->
+        <div class="absolute inset-0 z-0" style="background: linear-gradient(to right, #112923 0%, rgba(17,41,35,0.92) 30%, rgba(26,60,52,0.55) 55%, rgba(26,60,52,0.15) 80%, rgba(26,60,52,0) 100%);"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div class="space-y-6 text-center lg:text-left max-w-2xl">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+                    Jelajahi Kekayaan Kuliner Nusantara & Jejak Rempah-Rempah
+                </h1>
+                <p class="text-cream/80 text-base sm:text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                    Temukan asal-usul, sejarah kekayaan aroma, dan keajaiban rempah asli Indonesia langsung dari daerah penghasil terbaiknya melalui Peta Interaktif Mapbox GL.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: MAPMETRICS INTERACTIVE MAP -->
+    <section id="map-section" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-8">
+            <h2 class="text-3xl sm:text-4xl font-bold text-forest mt-3">PETA ASAL USUL REMPAH-REMPAH NUSANTARA</h2>
+            <p class="text-forest/70 mt-2 text-sm sm:text-base">
+                Klik pin penanda di seluruh wilayah Kepulauan Indonesia untuk mempelajari karakteristik rempah khas daerah tersebut.
+            </p>
+        </div>
+
+        <!-- Map Canvas Container -->
+        <div class="relative shadow-xl border border-forest/10 rounded-2xl overflow-hidden bg-cream-dark">
+            <div id="map"></div>
+        </div>
+
+        <!-- Tombol reset jalur peta -->
+        <div class="mt-4 flex justify-center">
+            <button type="button" onclick="resetMapBounds()" class="px-5 py-2.5 text-sm font-semibold bg-forest text-cream rounded-full shadow-md hover:bg-terracotta transition-colors flex items-center gap-2">
+                <i class="fa-solid fa-rotate-left"></i> Reset Jalur Peta
+            </button>
+        </div>
+    </section>
+
+    <!-- SECTION 3: MAKANAN TRADISIONAL (carousel, disorot) -->
+    <section id="resep" class="py-16 bg-gradient-to-b from-gold/15 via-cream-card to-cream-card border-y-2 border-gold/40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-end justify-between gap-4 mb-6">
+                <div>
+                    <span class="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-terracotta bg-terracotta/10 px-2.5 py-1 rounded-full border border-terracotta/20"><i class="fa-solid fa-star text-gold"></i> Unggulan</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold text-forest mt-2">MAKANAN TRADISIONAL</h2>
+                    <p class="text-sm text-forest/70 mt-1">Jelajahi olahan kuliner legendaris khas Nusantara.</p>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                    <a href="masakan.html" onclick="openRecipeList(event)" class="hidden sm:inline text-xs font-semibold text-terracotta hover:underline mr-1">Lihat semua &rarr;</a>
+                    <button type="button" onclick="NUSA.scrollRow('recipe-carousel',-1)" aria-label="Geser kiri" class="w-9 h-9 rounded-full border border-forest/20 text-forest hover:bg-forest hover:text-cream transition-colors flex items-center justify-center"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button type="button" onclick="NUSA.scrollRow('recipe-carousel',1)" aria-label="Geser kanan" class="w-9 h-9 rounded-full border border-forest/20 text-forest hover:bg-forest hover:text-cream transition-colors flex items-center justify-center"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+                </div>
+            </div>
+            <div id="recipe-carousel" class="flex gap-4 overflow-x-auto snap-x scroll-smooth pb-4"></div>
+            <a href="masakan.html" onclick="openRecipeList(event)" class="sm:hidden inline-block mt-1 text-xs font-semibold text-terracotta">Lihat semua masakan &rarr;</a>
+        </div>
+    </section>
+
+    <!-- SECTION 4: REMPAH & BAHAN (carousel) -->
+    <section id="rempah" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between gap-4 mb-6">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-terracotta">Ensiklopedia</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-forest mt-1">REMPAH &amp; BAHAN</h2>
+                <p class="text-sm text-forest/70 mt-1">Kenali manfaat serta asal wilayah komoditas rempah Nusantara.</p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="rempah.html" class="hidden sm:inline text-xs font-semibold text-terracotta hover:underline mr-1">Lihat semua &rarr;</a>
+                <button type="button" onclick="NUSA.scrollRow('spice-carousel',-1)" aria-label="Geser kiri" class="w-9 h-9 rounded-full border border-forest/20 text-forest hover:bg-forest hover:text-cream transition-colors flex items-center justify-center"><i class="fa-solid fa-chevron-left text-xs"></i></button>
+                    <button type="button" onclick="NUSA.scrollRow('spice-carousel',1)" aria-label="Geser kanan" class="w-9 h-9 rounded-full border border-forest/20 text-forest hover:bg-forest hover:text-cream transition-colors flex items-center justify-center"><i class="fa-solid fa-chevron-right text-xs"></i></button>
+            </div>
+        </div>
+        <div id="spice-carousel" class="flex gap-4 overflow-x-auto snap-x scroll-smooth pb-4"></div>
+        <a href="rempah.html" class="sm:hidden inline-block mt-1 text-xs font-semibold text-terracotta">Lihat semua rempah &rarr;</a>
+    </section>
+
+    <!-- SECTION 5: EDUKASI SEJARAH -->
+    <section id="edukasi" class="py-16 bg-forest text-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-xs font-bold uppercase tracking-widest text-gold">Jalur Rempah Warisan Dunia</span>
+                <h2 class="text-3xl sm:text-4xl font-bold mt-2 leading-tight">Jejak Maritim Nusantara yang Mengubah Dunia</h2>
+                <p class="text-cream/80 text-sm mt-4 leading-relaxed">
+                    Selama berabad-abad, kepulauan Nusantara menjadi pusat gravitasi perdagangan dunia berkat melimpahnya tanaman rempah endemis yang tidak ditemukan di bagian bumi lainnya.
+                </p>
+                <ul class="mt-6 space-y-3 text-xs sm:text-sm text-cream/90">
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                        <span><strong>Titik Temu Peradaban:</strong> Perdagangan pala dan cengkeh mempertemukan pedagang Arab, Tiongkok, Eropa, dan Melayu.</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fa-solid fa-circle-check text-gold mt-1"></i>
+                        <span><strong>Nilai Lebih Dari Emas:</strong> Pada abad ke-17, segenggam buah pala Maluku memiliki nilai setara dengan batangan emas di pasar Eropa.</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-forest-light p-6 rounded-2xl border border-gold/20 shadow-xl space-y-4">
+                <h3 class="font-bold text-xl text-gold border-b border-gold/20 pb-2">Tahukah Anda?</h3>
+                <div class="space-y-3 text-xs">
+                    <div class="bg-forest/50 p-3 rounded-lg border border-cream/10">
+                        <span class="font-bold text-gold block mb-1">Kepulauan Banda & Perjanjian Breda (1667)</span>
+                        <p class="text-cream/80">Inggris menukar pulau Run di Maluku yang kaya akan pohon pala dengan pulau Manhattan di Amerika kepada Belanda.</p>
+                    </div>
+                    <div class="bg-forest/50 p-3 rounded-lg border border-cream/10">
+                        <span class="font-bold text-gold block mb-1">Kayu Manis Kerinci</span>
+                        <p class="text-cream/80">Indonesia menyuplai lebih dari 45% kebutuhan kayu manis (Cinnamomum burmannii) berkualitas tinggi di seluruh dunia.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="py-12 bg-cream-card border-t border-forest/10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h3 class="text-2xl font-bold text-forest mb-2">Langganan Wawasan Rempah & Resep Autentik</h3>
+            <p class="text-xs text-forest/70 mb-6">Dapatkan artikel eksklusif mengenai sejarah, tips pengolahan rempah, dan pembaruan peta secara berkala.</p>
+            <form onsubmit="handleSubscribe(event)" class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto">
+                <input type="email" required placeholder="Masukkan alamat email Anda..." class="px-4 py-2.5 text-xs rounded-xl border border-forest/20 flex-1 focus:outline-none focus:border-terracotta bg-white">
+                <button type="submit" class="px-6 py-2.5 text-xs font-semibold bg-terracotta text-white rounded-xl hover:bg-terracotta-dark transition-all shadow">Langganan</button>
+            </form>
+            <p id="subscribe-msg" class="text-xs text-emerald-700 font-medium mt-2 hidden">Terima kasih telah berlangganan NUSAHERA!</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-forest-dark text-cream/70 py-12 border-t border-gold/10 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+            <div class="space-y-3">
+                <div class="flex items-center gap-2">
+                    <div class="w-7 h-7 rounded-full bg-terracotta flex items-center justify-center text-cream">
+                        <i class="fa-solid fa-compass text-xs"></i>
+                    </div>
+                    <span class="font-heading text-lg font-bold text-cream tracking-wider">NUSAHERA</span>
+                </div>
+                <p class="text-cream/60 leading-relaxed">Platform digital pengenalan dan pelestarian sejarah kekayaan rempah serta tradisi kuliner khas Nusantara.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-cream mb-3 uppercase tracking-wider">Navigasi</h4>
+                <ul class="space-y-2">
+                    <li><a href="#hero" class="hover:text-gold transition-colors">Beranda</a></li>
+                    <li><a href="#map-section" class="hover:text-gold transition-colors">Peta Mapbox GL</a></li>
+                    <li><a href="#resep" class="hover:text-gold transition-colors">Resep Masakan</a></li>
+                    <li><a href="#rempah" class="hover:text-gold transition-colors">Katalog Rempah</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-cream mb-3 uppercase tracking-wider">Teknologi Map</h4>
+                <ul class="space-y-2">
+                    <li><a href="https://docs.mapbox.com/mapbox-gl-js/" target="_blank" class="hover:text-gold transition-colors">Mapbox GL JS Library</a></li>
+                    <li><span class="text-cream/40">Mapbox Vector Tile Engine</span></li>
+                    <li><span class="text-cream/40">WebGL Map Rendering</span></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-cream mb-3 uppercase tracking-wider">Ikuti Kami</h4>
+                <div class="flex gap-3 text-base">
+                    <a href="#" class="w-8 h-8 rounded-full bg-forest flex items-center justify-center hover:bg-terracotta transition-colors"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-forest flex items-center justify-center hover:bg-terracotta transition-colors"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#" class="w-8 h-8 rounded-full bg-forest flex items-center justify-center hover:bg-terracotta transition-colors"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 text-center border-t border-cream/10 pt-6 text-cream/40">
+            &copy; 2026 NUSAHERA. Seluruh hak cipta dilindungi.
+        </div>
+    </footer>
+
+    <!-- CHATBOT WIDGET: TANYA NURA -->
+    <div class="fixed bottom-5 right-5 z-50">
+        <!-- Toggle Button -->
+        <button onclick="toggleChat()" class="w-14 h-14 rounded-full bg-terracotta text-white shadow-2xl flex items-center justify-center text-xl hover:bg-gold transition-all duration-300 hover:scale-110 border-2 border-white">
+            <i class="fa-solid fa-comments" id="chat-icon"></i>
+        </button>
+
+        <!-- Chat Container -->
+        <div id="chat-window" class="hidden absolute bottom-16 right-0 w-80 sm:w-96 rounded-2xl shadow-2xl border border-forest/10 overflow-hidden chat-glass flex flex-col h-[420px]">
+            <div class="bg-forest p-4 text-cream flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 rounded-full bg-gold text-forest font-bold flex items-center justify-center text-xs">
+                        NR
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-xs">Tanya Nura - Asisten Budaya</h4>
+                        <span class="text-[10px] text-cream/60 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> Online</span>
+                    </div>
+                </div>
+                <button onclick="toggleChat()" class="text-cream/60 hover:text-cream">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Messages Box -->
+            <div id="chat-messages" class="flex-1 p-4 overflow-y-auto space-y-3 text-xs">
+                <div class="bg-cream-dark p-3 rounded-xl max-w-[85%] border border-forest/5 text-forest">
+                    Halo! Saya <strong>Nura</strong>, asisten jelajah rempah Nusahera. Ada yang ingin Anda tanyakan seputar asal-usul rempah atau resep khas Nusantara? 🌶️
+                </div>
+            </div>
+
+            <!-- Chat Input -->
+            <form onsubmit="handleChatSubmit(event)" class="p-3 border-t border-forest/10 bg-cream flex gap-2">
+                <input type="text" id="chat-input" placeholder="Tanya Nura..." class="flex-1 px-3 py-2 text-xs border border-forest/20 rounded-lg focus:outline-none focus:border-terracotta">
+                <button type="submit" class="px-3 py-2 bg-terracotta text-white rounded-lg hover:bg-terracotta-dark transition-colors text-xs">
+                    <i class="fa-solid fa-paper-plane"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT & MAPMETRICS INITIALIZATION -->
+    <!-- Konfigurasi dari .env (lihat js/env.js) harus dimuat sebelum main.js -->
+    <script src="js/env.js"></script>
+    <script src="js/catalog.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Popup daftar semua masakan (diisi dari database resep) -->
+    <div id="recipe-list-modal" class="hidden fixed inset-0 z-[90] bg-black/60 p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="recipe-list-title" onclick="if(event.target===this)closeRecipeList()">
+      <div class="max-w-6xl mx-auto my-8 bg-cream rounded-2xl shadow-2xl overflow-hidden">
+        <div class="sticky top-0 z-10 bg-cream flex flex-wrap items-center justify-between gap-3 p-5 md:p-6 border-b border-forest/10">
+          <div>
+            <p class="text-xs uppercase tracking-widest font-bold text-terracotta">Katalog</p>
+            <h2 id="recipe-list-title" class="text-xl md:text-2xl font-bold text-forest">Semua Makanan Tradisional <span id="recipe-list-count" class="text-sm font-semibold text-forest/50"></span></h2>
+          </div>
+          <div class="flex items-center gap-3 flex-1 sm:flex-none justify-end">
+            <div class="relative flex-1 sm:w-64">
+              <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-forest/40 text-xs"></i>
+              <input id="recipe-list-search" type="search" oninput="renderRecipeList(this.value)" placeholder="Cari masakan atau daerah..." class="w-full pl-8 pr-3 py-2 text-sm rounded-full bg-cream-card border border-forest/15 text-forest placeholder:text-forest/45 focus:outline-none focus:border-terracotta">
+            </div>
+            <button onclick="closeRecipeList()" class="shrink-0 rounded-full w-10 h-10 bg-forest/10 text-forest hover:bg-terracotta hover:text-white" aria-label="Tutup daftar masakan"><i class="fa-solid fa-xmark"></i></button>
+          </div>
+        </div>
+        <div class="p-5 md:p-6">
+          <div id="recipe-list-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+          <p id="recipe-list-empty" class="hidden text-sm text-forest/60 py-10 text-center">Tidak ada masakan yang cocok dengan pencarianmu.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal detail resep: data disimpan juga dalam file nusahera_resep.json -->
+    <div id="recipe-modal" class="hidden fixed inset-0 z-[100] bg-black/60 p-4 overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="recipe-modal-title" onclick="if(event.target===this)closeRecipe()">
+      <div class="max-w-3xl mx-auto my-8 bg-cream rounded-2xl shadow-2xl overflow-hidden">
+        <div class="flex items-start justify-between gap-4 p-5 md:p-7 border-b border-forest/10">
+          <div><p id="recipe-modal-region" class="text-xs uppercase tracking-widest font-bold text-terracotta"></p><h2 id="recipe-modal-title" class="text-2xl md:text-3xl font-bold text-forest mt-1"></h2><p id="recipe-modal-description" class="text-sm text-forest/70 mt-2"></p><button id="recipe-route-button" onclick="showRecipeRoutes(activeRecipeRouteId)" class="mt-3 px-3 py-2 rounded-lg bg-terracotta text-white text-xs font-semibold hover:bg-terracotta-dark"><i class="fa-solid fa-route mr-1"></i> Tampilkan jalur rempah di peta</button></div>
+          <button onclick="closeRecipe()" class="shrink-0 rounded-full w-10 h-10 bg-forest/10 text-forest hover:bg-terracotta hover:text-white" aria-label="Tutup resep"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="p-5 md:p-7 grid md:grid-cols-2 gap-7">
+          <div><div class="flex gap-3 text-xs text-forest/70 mb-5"><span><i class="fa-regular fa-clock text-terracotta"></i> <b id="recipe-modal-time"></b></span><span><i class="fa-solid fa-users text-terracotta"></i> <b id="recipe-modal-servings"></b> porsi</span></div><h3 class="font-bold text-lg text-forest mb-3">Bahan-bahan</h3><ul id="recipe-modal-ingredients" class="space-y-2 text-sm text-forest/80 list-disc pl-5"></ul><h3 class="font-bold text-lg text-forest mt-6 mb-3">Rempah utama</h3><div id="recipe-modal-spices" class="flex flex-wrap gap-2"></div></div>
+          <div><h3 class="font-bold text-lg text-forest mb-3">Cara memasak</h3><ol id="recipe-modal-steps" class="space-y-3 text-sm text-forest/80 list-decimal pl-5"></ol><div class="mt-6 p-4 rounded-xl bg-forest/5"><h3 class="font-bold text-forest text-sm mb-1">Nilai budaya</h3><p id="recipe-modal-culture" class="text-sm text-forest/75"></p></div><p id="recipe-modal-source" class="text-[11px] text-forest/50 mt-4"></p></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/nav.js"></script>
+</body>
+</html>
